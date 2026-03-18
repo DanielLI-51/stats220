@@ -1,11 +1,20 @@
 # stats220
 
-This is my repo for STATS 220. 
+This is my repo for **STATS 220** at *The University of Auckland*.
 
-A little about me:
+## A little bit about me
+- My name is **Daniel LI**.
+- I am interested in *data, coding, and video games*.
+- I can communicate in **English**, **Mandarin**, and **Cantonese**.
 
-- I am undertaking a degree in compsci
-- I am taking STATS 220 because loving to code thing
-- I am interested in learning about coding in stats and compsci
+## What I’m learning in STATS 220
+1. Using R to work with **data** and create *visualisations*.
+2. Writing Markdown to present work clearly.
+3. Building small reproducible projects using GitHub.
 
-A meme that captures how I currently feel about my university studies is ![](https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif)
+## Useful links
+- Course tools: [link1](https://www.r-project.org/)
+- University website: [link2](https://www.auckland.ac.nz/en.html)
+
+## A new GIF
+![](https://media1.tenor.com/m/Xj0I2vMUoOIAAAAd/qazqaz.gif)
