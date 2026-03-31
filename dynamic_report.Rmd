@@ -1,0 +1,83 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+library(tidyverse)
+
+# Read the data from the published CSV URL
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSYrOC3gtkFdmUEvQu3VroqLgEM8SgtPa5OS1WuZdwanZKHJOwWCCrIgKzzTTbFfVP9co5ZncZbrXeM/pub?output=csv")
+
+# Create a new data frame called latest_data by renaming variables
+latest_data <- logged_data %>%
+  rename(
+    timestamp = `时间戳记`,
+    drink_type = `What type of drink is it?`,
+    carbonated = `Is the drink carbonated?`,
+    sugar_free = `Is the drink marketed as sugar-free or zero sugar?`,
+    volume_ml = `What is the volume of the drink (mL)?`,
+    packaging = `What type of packaging does the drink have?`
+  )
+```
+
+```{css}
+h2 {
+  color: #2c6db2;
+  font-weight: bold;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+```
+## Observed packaged drinks in a supermarket
+
+This report summarises packaged drinks observed in a supermarket. Each response represents one observed drink item.
+
+There are currently `r nrow(latest_data)` observed drinks recorded in the dataset.
+
+The mean drink volume is `r round(mean(latest_data$volume_ml, na.rm = TRUE), 1)` mL.
+
+The smallest observed drink volume is `r min(latest_data$volume_ml, na.rm = TRUE)` mL, and the largest observed drink volume is `r max(latest_data$volume_ml, na.rm = TRUE)` mL.
+
+
+
+
+```{r}
+# First bar chart
+latest_data %>%
+  ggplot(aes(x = drink_type)) +
+  geom_bar(fill = "#7db7d5") +
+  labs(
+    title = "Number of observed drinks by drink type",
+    x = "Drink type",
+    y = "Count"
+  ) +
+  theme_minimal()
+
+```
+
+```{r}
+# Second bar chart
+latest_data %>%
+  ggplot(aes(x = packaging)) +
+  geom_bar(fill = "#c9a0dc") +
+  labs(
+    title = "Number of observed drinks by packaging type",
+    x = "Packaging type",
+    y = "Count"
+  ) +
+  theme_minimal()
+
+```
+
+
+Soft drinks, energy drinks, juices, and bottled water appear frequently in the observations. Plastic bottles is the most common packaging type. These patterns may change as more observations are added through the Google Form.
